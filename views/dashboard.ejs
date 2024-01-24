@@ -1,0 +1,16 @@
+<%- include('./components/navbar.ejs') %>
+<div class="flex justify-between px-10">
+    <h1 class="text-3xl font-bold">Daftar User</h1>
+    <a href="/dashboard/create" class="btn btn-neutral">Tambah Pengguna</a>
+</div>
+<div class="px-10 py-2">
+<% if (flash.length !== 0) { %>
+    <div role="alert" class="alert alert-success">
+        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <span><%= flash %></span>
+    </div>
+<% } %>
+</div>
+<div class="px-5">
+    <%- include('./components/table.ejs', {users}) %>
+</div>

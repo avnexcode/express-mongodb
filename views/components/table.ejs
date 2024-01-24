@@ -1,0 +1,32 @@
+<div class="overflow-x-auto">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (users.length > 0) { %>
+                <% users.forEach((user, index) => { %>
+                    <tr class="hover">
+                        <th><%- index + 1 %></th>
+                        <th><%- user.name %></th>
+                        <th><%- user.phone %></th>
+                        <th><%- user.email %></th>
+                        <th>
+                            <a href="/dashboard/detail?id=<%= user._id %>" class="btn btn-sm btn-info">Detail</a>
+                        </th>
+                    </tr>
+                <% }) %> 
+            <% } else { %>
+                <tr>
+                    <td class="text-center text-xl text-green-500" colspan="5">Data Belum Ada</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>

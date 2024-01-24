@@ -1,0 +1,15 @@
+<%- include('./components/navbar.ejs') %>
+<div class="w-full flex justify-center p-10 text-3xl font-sans">
+    <h1>Users Manager</h1>
+</div>
+<main>
+    <div class="flex gap-5 justify-center flex-wrap">
+        <% if (users.length > 0) { %>
+            <% users.forEach(user => { %>
+                <%- include('./components/card', {user}) %>
+            <% }) %>
+        <% } else { %>
+            <h1>Data Ndak Ada</h1>
+        <% } %>
+    </div>
+</main>

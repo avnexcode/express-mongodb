@@ -1,0 +1,23 @@
+<div>
+    <div class="card w-96 bg-base-100 shadow-xl image-full">
+        <figure><img src="https://source.unsplash.com/1200x350?human" alt="Shoes" /></figure>
+        <div class="card-body">
+            <h2 class="card-title"><%= user.name %></h2>
+            <table>
+                <tr>
+                    <td>No Hp.</td>
+                    <td>: <%= user.phone %></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>: <%= user.email %></td>
+                </tr>
+            </table>
+            <div class="card-actions justify-end mt-5">
+                <form action="/update/<%= user._id %>" method="get">
+                    <button class="btn btn-sm btn-info">Info</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="absolute top-0 left-0 p-5">
+    <a href="/dashboard" class="text-xl">Back</a>
+</div>
+<div>
+    <div class="hero min-h-screen bg-base-200">
+        <div class="hero-content flex-col lg:flex-row">
+            <img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
+                class="max-w-sm rounded-lg shadow-2xl" />
+            <div>
+                <h1 class="text-5xl font-bold">
+                    <%= user.name %>
+                </h1>
+                <table class="flex flex-col gap-1 my-8">
+                    <tr>
+                        <td>Phone</td>
+                        <td>: <%= user.phone %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>: <%= user.email %>
+                        </td>
+                    </tr>
+                </table>
+                <div class="flex gap-5 w-full justify-end items-center">
+                    <a href="/dashboard/update?id=<%= user._id %>" class="btn btn-warning btn-sm">Update</a>
+                    <button class="btn btn-sm btn-error" onclick="delete_modal.showModal()">Delete</button>
+                    
+                    <dialog id="delete_modal" class="modal modal-bottom sm:modal-middle p-10 rounded-3xl">
+                        <div class="modal-box">
+                            <h3 class="font-bold text-lg mb-5">Yakin menghapus data?</h3>
+                            <p class="py-4">Seluruh data akan dihapus jika kamu telah mengkonfirmasi aksi ini.</p>
+                            <div class="modal-action flex gap-5 justify-end mt-5">
+                                <form method="dialog">
+                                    <button class="btn btn-sm btn-neutral">Close</button>
+                                </form>
+                                <form method="POST" action="/dashboard?_method=DELETE">
+                                    <input type="hidden" name="id" value="<%= user._id %>">
+                                    <button type="submit" class="btn btn-sm btn-error">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </dialog>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

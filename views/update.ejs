@@ -1,0 +1,53 @@
+<div class="absolute top-0 left-0 p-5">
+    <a href="/dashboard/detail?id=<%= user._id %>" class="text-lg">Kembali</a>
+</div>
+<div class="flex w-full justify-center p-10">
+    <h1 class="text-3xl font-bold">Update</h1>
+</div>
+
+<div class="p-10 flex flex-col gap-2">
+    <% if (typeof(errors) !== 'undefined') { %>
+        <% errors.forEach(error => { %>
+            <div role="alert" class="alert alert-error">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span><%= error.msg %></span>
+            </div>
+        <% }) %>
+    <% } %>
+</div>
+
+<div class="flex justify-center w-full mt-20">
+    <form action="/dashboard?_method=PUT" method="post" class="flex flex-col items-center w-[600px] h-max gap-5">
+        <input type="hidden" name="id" value="<%= user._id %>">
+        <input type="hidden" name="oldName" value="<%= user.name %>">
+        <input type="hidden" name="oldPhone" value="<%= user.phone %>">
+        <input type="hidden" name="oldEmail" value="<%= user.email %>">
+        <div class="form-control w-full">
+            <div class="label">
+                <span class="label-text">Name</span>
+            </div>
+            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="name"
+                value="<%= user.name %>" />
+        </div>
+        <div class="form-control w-full">
+            <div class="label">
+                <span class="label-text">Phone</span>
+            </div>
+            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="phone"
+                value="<%= user.phone %>" />
+        </div>
+        <div class="form-control w-full">
+            <div class="label">
+                <span class="label-text">Email</span>
+            </div>
+            <input type="email" placeholder="Type here" class="input input-bordered w-full" name="email"
+                value="<%= user.email %>" />
+        </div>
+        <div class="flex justify-end w-full">
+            <button type="submit" class="btn btn-sm btn-info">Update</button>
+        </div>
+    </form>
+</div>
